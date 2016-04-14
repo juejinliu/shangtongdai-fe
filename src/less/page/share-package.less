@@ -1,0 +1,122 @@
+.share-package {
+  width: 100%;
+  margin-bottom: 110/80rem;
+
+  .package-top {
+    background: #FFFFFF;
+    padding: 1px 0;
+    .share-package-money {
+      width: 246/80rem;
+      height: 246/80rem;
+      border-radius: 246/80rem;
+      overflow: hidden;
+      background: @f-dark-red;
+      opacity: 0.8;
+      margin: 20/40rem auto 0;
+      color: #FFFFFF;
+      text-align: center;
+      .share-package-money-h2 {
+        padding-top: 100/80rem;
+        background: url("../../img/bonus/package-icon.png") center 30/80rem no-repeat;
+        background-size: 58/80rem 63/80rem;
+        font-size: 14/40rem;
+      }
+      .share-package-p {
+        padding-top: 10/40rem;
+        .share-package-num {
+          font-size: 26/40rem;
+        }
+        span {
+          font-size: 18/40rem;
+        }
+      }
+
+    }
+  }
+  .share-package-button {
+    width: 204/80rem;
+    height: 58/80rem;
+    display: block;
+    border-radius: 5px;
+    background: rgb(67, 162, 241);
+    line-height: 58/80rem;
+    font-size: 16/40rem;
+    margin: 20/40rem auto;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .share-package-button-notice-text {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .recive-money {
+    overflow: hidden;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    opacity: 0.8;
+    text-align: center;
+    line-height: 0.8rem;
+    font-size: 16/40rem;
+    .recive-month {
+      width: 50%;
+    }
+    .recive-all {
+      width: 50%;
+      border-left: 1px solid #CCCCCC;
+    }
+  }
+  .money-details {
+    background: #FFFFFF;
+    padding-top: 1rem;
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 10px;
+    .money-details-title {
+      overflow: hidden;
+      .title-hr {
+        width: 210/80rem;
+      }
+      .title-select {
+        width: 2rem;
+      }
+    }
+    .money-details-ul {
+      overflow: hidden;
+      .no-list {
+        width: 300/80rem;
+        height: 300/80rem;
+        margin: 10px auto;
+        padding-top: 2rem;
+        padding-left: 0.2rem;
+        background: url("../../img/bonus/no-list.png") center no-repeat;
+        background-size: contain;
+      }
+      .money-details-li {
+        &:first-child {
+          border-top: none;
+        }
+        border-top: 1px solid #CCCCCC;
+        overflow: hidden;
+        line-height: 1rem;
+        .money-details-title {
+          width: 34%;
+        }
+        .money-details-date {
+          width: 33%;
+        }
+        .money-details-money {
+          width: 33%;
+          .money-details-blue {
+            border: 1px dashed #0ba7ff;
+            color: #0ba7ff;
+            padding: 3px;
+            display: inline-block;
+            margin-left: 4px;
+            line-height: 1em;
+          }
+        }
+      }
+    }
+  }
+}

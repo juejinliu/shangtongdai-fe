@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head lang='en'>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'>
+    <title>商通贷</title>
+</head>
+<body>
+<!--<div id="spinner">-->
+    <!--<div class="spinner">-->
+        <!--<div class="rect1"></div>-->
+        <!--<div class="rect2"></div>-->
+        <!--<div class="rect3"></div>-->
+        <!--<div class="rect4"></div>-->
+        <!--<div class="rect5"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div id='shangtongdai-h5'></div>
+<script>
+
+
+    function stdGetAccountsDetail(callback) {
+        if (callback) {
+            callback({
+                'accounts': [
+                    {
+                        'accountType': 'TAOBAO',
+                        'accountName': 'malin-1',
+                        'gmv6': 100000
+                    },
+                    {
+                        'accountType': 'TMALL',
+                        'accountName': 'qijiao-1',
+                        'gmv6': 100000
+                    }
+                ]
+            })
+        } else {
+            return -1
+        }
+    }
+    //      齐娇     10.106.65.52
+    //    http://10.100.67.174:9000/
+    var std = {
+        allData: {},
+        platform: 'chinese',
+        estimateUrlChinese: 'build/js/estimate.json',
+        stdApi: {
+            codeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/signup\/authCode",
+            signupApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/signup",
+            retrievePasswordCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/retrievePassword\/authCode",
+            retrievePasswordApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/retrievePassword",
+            loginCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/login\/authCode",
+            loginApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/user\/login",
+            estimateApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/estimation\/all",
+            provinceApi: "http:\/\/10.100.67.174:9000\/address\/provinces",
+            //添加手机号    验证码
+            addMobileAuthCodeApi: "/addMobile/authCode",
+            //添加手机号
+            addMobileApi: "http:\/\/10.100.67.174:9000\/addMobile",
+            isNeedMobileApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/bp\/loginifnot",
+
+            citiesApi: "http://10.100.67.174:9000/address/cities"
+            ,
+            countiesApi: "http://10.100.67.174:9000/address/counties"
+            ,
+            ebayApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/account\/ebay\/submit",
+            amazonApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/account\/amazon\/submit",
+            wishApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/account\/wish\/submit",
+            platformApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/account\/platform\/submit",
+            applyableProductApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/applyable-products",
+            uploadApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/upload",
+            uploadWechatApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/upload\/wechat",
+            applicationSubmitApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/application\/submit",
+            platformPasswordApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/platform\/password\/submit",
+            accountAuthorizeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/accounts\/authorize",
+            accountPasswordApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/password\/submit",
+            identificationApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/identification",
+            userInfoApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/userInfo",
+            newPeopleReserveApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/activity\/overseaNew\/reserve",
+            newPeopleApplicationApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/activity\/overseaNew\/application",
+            creditcardApi: "/api/1.0/m/platform/accounts/",
+            individualAccountsApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/individual",
+            rateApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/rate\/status",
+            submitIndividualCreditApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/submitIndividualCredit",
+            othersCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/platform\/code",
+
+            occupiedAmountCents: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/occupiedAmountCents",
+            loanFormApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/loanUserInfo",
+            submitAllAccounts: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/submitAllAccounts",
+            deleteApi: "/api/1.0/m/",
+
+            bonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/bonuses",
+            invCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/codes",
+
+            hasBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/activity\/rebate818\/hasBonus",
+
+            bonusCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/codes",
+            mgmBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/bonuses",
+            mgmAccountDetailApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/accountDetail",
+            mgmOpenBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/openBonus",
+            mgmSendBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/sendBonus",
+            mgmAuthCodeApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/authCode",
+            mgmViewWalletApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/viewWallet",
+            mgmInviteSendApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/mgm\/inviteSend",
+            mgmWithdrawiFrameUrl: "http:\/\/10.100.67.174:9000\/mgm\/withdraw?isFromMobile=true",
+
+            trialAssetApi: "http:\/\/10.100.67.204:20088\/web\/trial_asset\/create\/noauth",
+            licaiKeyApi: "http:\/\/10.100.67.204:20088\/web\/product\/info?br=shangtongdai&d=oj-nsv&data={}",
+
+            double12BonusCheckApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/double12\/bonus",
+            double12OpenBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/double12\/openBonus",
+            //mgm qrcode
+            mgmQrSubmitApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/submit",
+            mgmQrAuthcodeApi: "/mgmQrLogin/authCode",
+            mgmQrLoginApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/login",
+            mgmQrEstimateApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/estimate",
+            mgmQrInviteApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/invitationList",
+            mgmQrBonusesApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/bonusList",
+            mgmQrBonusTimesApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/mobile\/bonusTimes",
+            mgmQrOpenBonusApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/mobile\/openBonus",
+            mgmQrMyBonusApi: "http:\/\/10.100.67.174:9000\/api\/mgm\/myBonus",
+            nianGuanBonusApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/nianGuan\/joinActivity",
+            authImageApi: "http:\/\/10.100.67.174:9000\/auth\/image",
+            ydwyEstimationApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/activity\/zhiwang\/estimation",
+            sendZhiwangLoginAuthCodeApi: "/api/1.0/m/activity/zhiwang/authcode",
+            zhiwangLoginApi: "http:\/\/10.100.67.174:9000\/api\/1.0\/m\/activity\/zhiwang\/login",
+            uploadDragonApi: "http://shangdai.sandbox.yixin.com/api/1.0/m/upload/wechatBackBase64"
+
+        },
+        amazon: [{
+            'id': 3,
+            'message': '英国'
+        },
+            {
+                'id': 2,
+                'message': '美国'
+            }
+        ],
+
+        stdUserStatus: {
+            termiteUrl: 'https://t1-bdp.yixin.com/termite/submit',
+            identification: '210111198901291010',
+            amazonCountry: [
+                {
+                    'id': 2,
+                    'message': '美国'
+                },
+                {
+                    'id': 3,
+                    'message': '英国'
+                },
+                {
+                    'id': 4,
+                    'message': '德国'
+                },
+                {
+                    'id': 5,
+                    'message': '法国'
+                },
+                {
+                    'id': 1,
+                    'message': '中国'
+                },
+                {
+                    'id': 6,
+                    'message': '日本'
+                },
+                {
+                    'id': 7,
+                    'message': '加拿大'
+                },
+                {
+                    'id': 8,
+                    'message': '意大利'
+                }
+            ],
+            emailTypes: [
+                {'id': 1, 'message': 'qq.com'},
+                {'id': 2, 'message': '163.com'},
+                {'id': 3, 'message': '126.com'},
+                {'id': 4, 'message': 'sina.com'},
+                {'id': 5, 'message': '139.com'},
+                {'id': 6, 'message': '189.com'}
+            ],
+            'code': '',
+            'group': 'domestic',
+            'newUser': false,
+            purpose: [
+
+                {
+                    'id': 56,
+                    'message': '常规备货'
+                }
+                ,
+                {
+                    'id': 63,
+                    'message': '旺季备货'
+                }
+                ,
+                {
+                    'id': 57,
+                    'message': '上新品'
+                }
+                ,
+                {
+                    'id': 58,
+                    'message': '海外仓'
+                }
+                ,
+                {
+                    'id': 59,
+                    'message': '人员招聘'
+                }
+                ,
+                {
+                    'id': 60,
+                    'message': '固定资本投资'
+                }
+                ,
+                {
+                    'id': 61,
+                    'message': '建设品牌'
+                }
+                ,
+                {
+                    'id': 62,
+                    'message': '开拓新平台'
+                }
+                ,
+                {
+                    'id': 55,
+                    'message': '其他'
+                }
+            ],
+//    products: [{'id':103,'message':'先息后本3个月'},{'id':101,'message':'等额本息6个月'},{'id':102,'message':'等额本息12个月'},{'id':98,'message':'等额本息24个月'}],
+            contacts: [
+
+                {
+                    'id': 0,
+                    'showName': '家庭联系人姓名',
+                    'contacts': [
+                        {
+                            'message': '父母', 'id': 'parent'
+                        }
+                        ,
+                        {
+                            'message': '配偶', 'id': 'spouse'
+                        }
+                        ,
+                        {
+                            'message': '子女', 'id': 'child'
+                        }
+                    ]
+                }
+                ,
+                {
+                    'id': 1,
+                    'showName': '工作联系人姓名',
+                    'contacts': [
+                        {
+                            'message': '同事', 'id': 'colleague'
+                        }
+                        ,
+                        {
+                            'message': '供应商', 'id': 'supplier'
+                        }
+                        ,
+                        {
+                            'message': '服务商', 'id': 'serviceProvider'
+                        }
+                    ]
+                }
+                ,
+                {
+                    'id': 2,
+                    'showName': '其他联系人姓名',
+                    'contacts': [
+                        {
+                            'message': '朋友', 'id': 'friend'
+                        }
+                        ,
+                        {
+                            'message': '同学', 'id': 'classmate'
+                        }
+                        ,
+                        {
+                            'message': '老师', 'id': 'teacher'
+                        }
+                    ]
+                }
+            ],
+
+            applyable: true,
+            isLoggedIn: true,
+            shopTypes: [
+                {'id': 'SHOP_NAME', 'message': '店铺名称'},
+                {'id': 'SELLER_NAME', 'message': '旺旺名'},
+                {'id': 'SHOP_URL', 'message': '店铺地址'}
+            ],
+
+            estimateAmount: '555555',
+
+            error: {
+                result: true,
+                message: 'validate signature error'
+            },
+            AppStatus: {
+                status: '审核通过'// '审核通过','等待添加银行卡','等待放款','放款成功','还款完成'
+            },
+            mgmInfo: {
+                ownWechatAccount: '我发的',
+                sendCount: 10,
+                account: '',
+                shareMobile: '发送人电话',
+                shareWechatHeadImg: '',
+                shareWechatNickname: '发送人微信',
+                hasGotBonus: true,
+                isCodeValid: true
+            }
+
+        }
+    }
+</script>
+<script src='build/js/std-init.js'></script>
+<script src="//t-bdp.yixin.com/public/lmt-2.js"></script>
+</body>
+</html>

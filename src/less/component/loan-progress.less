@@ -1,0 +1,57 @@
+.loan-progress{
+  margin: 20px auto 30px;
+  ul{
+    overflow: hidden;
+    display: table;
+    width: 100%;
+    li{
+      display: table-cell;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  .text{
+    .active{
+      font-size: 14px;
+    }
+    .unable{
+      font-size: 13px;
+      color: #7B7878;
+    }
+  }
+  .pic{
+    margin: 10px auto;
+    .hr{
+      vertical-align: middle;
+      p{
+        height: 1px;
+        border: 0;
+        background: green;
+      }
+    }
+    .progress-over-status{
+      width: 20px;
+      height: 20px;
+      background: url("../../img/wechat/component/progress-success.png") center no-repeat ;
+      background-size: contain;
+    }
+    .active{
+      width: 20px;
+      height: 20px;
+      background: url("../../img/wechat/component/progress-ing.png") center no-repeat ;
+      background-size: contain;
+    }
+    .unable{
+      vertical-align: middle;
+      background: none;
+      width: 16px;
+      p{
+        width: 16px;
+        height: 16px;
+        background: #808080;
+        border-radius: 50%;
+      }
+
+    }
+  }
+}

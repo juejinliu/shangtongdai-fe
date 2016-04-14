@@ -1,0 +1,11 @@
+H5 前端
+====
+
+使用方法
+----
+
+1. npm install -g webpack webpack-dev-server eslint babel-eslint
+2. npm install
+3. webpack -w
+4. webpack-dev-server  
+5. server起起来以后，在site中配置对应的js和css地址即可

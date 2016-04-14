@@ -1,0 +1,49 @@
+.back-fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  left: 0;
+  opacity: 0.6;
+  background: #000000;
+
+}
+
+.popup {
+  position: fixed;
+  top: 25%;
+  left: 0;
+  z-index: 1;
+  right: 0;
+  margin: auto;
+  padding-bottom: 0.3rem;
+  background: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  .close {
+    width: 55/80rem;
+    height: 55/80rem;
+    position: absolute;
+    top: -23/80rem;
+    right: -23/80rem;
+    background: url("../../img/wechat/close.png") center no-repeat;
+    background-size: contain;
+  }
+  .popup-header {
+    overflow: hidden;
+    height: 20/40rem;
+    .close {
+      float: right;
+      margin: 10px;
+      width: 28/80rem;
+      height: 28/80rem;
+      background: url("../../img/wechat/clos.png") center no-repeat;
+      background-size: contain;
+    }
+  }
+  .popup-body {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

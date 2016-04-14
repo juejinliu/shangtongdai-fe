@@ -1,0 +1,40 @@
+.share-model{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  background: rgba(40, 39, 39, 0.8);
+  p{
+    font-size: 20px;
+    color: #efeaea;
+    text-align: right;
+    padding-right: 60px;
+    padding-top: 30px;
+  }
+  @keyframes mymove
+  {
+    from {top:0px;}
+    to {top:12px;}
+  }
+
+  @-webkit-keyframes mymove
+  {
+    from {top:0px;}
+    to {top:12px;}
+  }
+  .share-model-jiantou{
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    width: 100%;
+    height: 130px;
+    background: url("../../img/bonus/share-text.png") right center no-repeat;
+    background-size: contain  ;
+    animation: mymove 1s infinite;
+    animation-direction: alternate;
+    -webkit-animation: mymove 1s infinite;
+    -webkit-animation-direction: alternate;
+  }
+}

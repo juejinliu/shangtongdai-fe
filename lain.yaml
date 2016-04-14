@@ -1,0 +1,39 @@
+appname: shangtongdai-fe
+
+build:
+  base: registry.lain.bdp.cc/centos-sbt-nodejs:1.0.3
+  prepare:
+    version: "0"
+    script:
+      - npm config set proxy http://antigfw.bdp.cc:3128
+      - npm config set https-proxy http://antigfw.bdp.cc:3128
+      - npm install
+      - npm install -g webpack
+    keep:
+      - node_modules
+  script:
+    - npm config set proxy http://antigfw.bdp.cc:3128
+    - npm config set https-proxy http://antigfw.bdp.cc:3128
+    - npm install
+    - webpack -p
+    - echo -e '#!/bin/bash\nexec nginx -g "daemon off;"' > entry.sh
+    - chmod +x entry.sh
+
+release:
+  dest_base: registry.lain.bdp.cc/ubuntu-nginx:1.0.1
+  copy:
+    - src: /lain/app/build
+      dest: /usr/share/nginx/html
+    - src: /lain/app/entry.sh
+      dest: /entry.sh
+
+web:
+  mountpoint:
+    - shangtongdai.yxapp.xyz/h5
+  cmd: /entry.sh
+  env:
+    - LANG=zh_CN.UTF-8
+  port: 80
+
+notify:
+  slack: "#shangtongdai"
